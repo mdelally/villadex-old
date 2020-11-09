@@ -69,7 +69,7 @@
       </transition-group>
     </div>
 
-    <div class="text-center p-16 text-5xl text-yellow-700" v-else>
+    <div class="text-center p-16 text-5xl text-yellow-700" v-else-if="!loading">
       NO VILLAGERS MATCH!
     </div>
   </div>
