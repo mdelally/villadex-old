@@ -1,7 +1,5 @@
 <template>
   <Layout>
-    <h1 class="text-6xl text-center m-4 text-yellow-900">villadex</h1>
-
     <div class="bg-yellow-200 rounded-lg p-4 text-center text-yellow-900">
       <p class="mb-2">
         Quickly search and learn about

@@ -6,19 +6,35 @@
 
     <div
       v-if="!loading"
-      class="p-4 bg-yellow-300 rounded-lg text-yellow-700 sticky top-0 z-50 mb-2 border-2 border-yellow-600 flex justify-between items-center"
+      class="p-4 bg-yellow-300 rounded-lg text-yellow-700 mb-2 border-2 border-yellow-600 flex justify-between items-center"
     >
       <div class="flex flex-col items-center">
         <label class="text-sm font-black">FILTER BY NAME</label>
         <input
           type="text"
-          class="p-2 rounded-full bg-yellow-200 border-2 border-yellow-400"
+          class="p-2 rounded-full bg-yellow-200 border-2 border-yellow-400 w-64 text-center"
           v-model="nameFilter"
         />
       </div>
 
       <div class="toolbar flex">
+        <!-- SPECIES -->
         <div class="flex flex-col items-center">
+          <label for="personality" class="text-sm font-black">SPECIES</label>
+          <select
+            name="personality"
+            class="px-4 py-2 rounded-full bg-yellow-200 border-2 border-yellow-400"
+            v-model="specie"
+          >
+            <option :value="null" default>-- Species --</option>
+            <option v-for="s in species" :key="s" :value="s">
+              {{ s }}
+            </option>
+          </select>
+        </div>
+
+        <!-- PERSONALITY -->
+        <div class="flex flex-col ml-2 items-center">
           <label for="personality" class="text-sm font-black"
             >PERSONALITY</label
           >
@@ -28,17 +44,13 @@
             v-model="personality"
           >
             <option :value="null" default>-- Personality --</option>
-            <option value="Cranky">Cranky</option>
-            <option value="Jock">Jock</option>
-            <option value="Lazy">Lazy</option>
-            <option value="Normal">Normal</option>
-            <option value="Peppy">Peppy</option>
-            <option value="Sisterly">Sisterly</option>
-            <option value="Smug">Smug</option>
-            <option value="Snooty">Snooty</option>
+            <option v-for="p in personalities" :key="p" :value="p">
+              {{ p }}
+            </option>
           </select>
         </div>
 
+        <!-- HOBBY -->
         <div class="flex flex-col ml-2 items-center">
           <label for="personality" class="text-sm font-black">HOBBY</label>
           <select
@@ -47,12 +59,7 @@
             v-model="hobby"
           >
             <option :value="null" default>-- Hobby --</option>
-            <option value="Education">Education</option>
-            <option value="Fashion">Fashion</option>
-            <option value="Fitness">Fitness</option>
-            <option value="Music">Music</option>
-            <option value="Nature">Nature</option>
-            <option value="Play">Playing</option>
+            <option v-for="h in hobbies" :key="h" :value="h">{{ h }}</option>
           </select>
         </div>
       </div>
@@ -90,7 +97,56 @@ export default {
       nameFilter: "",
       personality: null,
       hobby: null,
+      specie: null,
       loadingText: "LOADING...",
+      personalities: [
+        "Cranky",
+        "Jock",
+        "Lazy",
+        "Normal",
+        "Peppy",
+        "Sisterly",
+        "Smug",
+        "Snooty",
+      ],
+      hobbies: ["Education", "Fashion", "Fitness", "Music", "Nature", "Play"],
+      species: [
+        "Alligator",
+        "Anteater",
+        "Bear",
+        "Bird",
+        "Bull",
+        "Cat",
+        "Chicken",
+        "Cow",
+        "Cub",
+        "Deer",
+        "Dog",
+        "Duck",
+        "Eagle",
+        "Elephant",
+        "Frog",
+        "Goat",
+        "Gorilla",
+        "Hamster",
+        "Hippo",
+        "Horse",
+        "Kangaroo",
+        "Koala",
+        "Lion",
+        "Monkey",
+        "Mouse",
+        "Octopus",
+        "Ostrich",
+        "Penguin",
+        "Pig",
+        "Rabbit",
+        "Rhino",
+        "Sheep",
+        "Squirrel",
+        "Tiger",
+        "Wolf",
+      ],
     };
   },
 
@@ -103,22 +159,31 @@ export default {
     filteredVillagers() {
       let self = this;
 
-      if (self.personality === null && self.hobby === null)
-        return this.filteredByName;
+      if (this.hobby || this.personality || this.specie) {
+        let params = this.filteredByName;
 
-      return this.filteredByName.filter((v) => {
-        if (self.personality !== null && self.hobby !== null)
-          return (
-            v.personality === self.personality &&
-            v.nh_details.hobby === self.hobby
-          );
+        if (this.specie) {
+          params = params.filter((v) => {
+            return v.species === self.specie;
+          });
+        }
 
-        if (self.personality !== null && self.hobby === null)
-          return v.personality === this.personality;
+        if (this.personality) {
+          params = params.filter((v) => {
+            return v.personality === self.personality;
+          });
+        }
 
-        if (self.personality === null && self.hobby !== null)
-          return v.nh_details.hobby === self.hobby;
-      });
+        if (this.hobby) {
+          params = params.filter((v) => {
+            return v.nh_details.hobby === self.hobby;
+          });
+        }
+
+        return params;
+      }
+
+      return this.filteredByName;
     },
   },
 
