@@ -1,7 +1,8 @@
 <template>
   <div class="villager-card-container p-2">
     <button
-      class="w-full villager-card bg-yellow-100 rounded-lg p-4 flex flex-col justify-center items-center hover:bg-yellow-200 hover:shadow-lg border-4 border-transparent hover:border-yellow-700"
+      class="w-full villager-card bg-yellow-200 rounded-lg p-4 flex flex-col justify-center items-center hover:bg-yellow-100 border-4 border-transparent hover:border-yellow-700"
+      @click="$emit('select-villager')"
     >
       <h3
         class="px-4 py-2 rounded-full shadow text-xl mb-2"
@@ -9,8 +10,12 @@
       >
         {{ v.name }}
       </h3>
-      <img class="h-32" :src="v.image_url" :alt="v.name" />
-      <em class="text-yellow-900 mb-2">{{
+      <img
+        class="h-32 villager-icon"
+        :src="v.nh_details.icon_url"
+        :alt="v.name"
+      />
+      <em class="text-yellow-900 m-2 px-3 py-1 font-black rounded-full">{{
         v.personality + " " + v.species
       }}</em>
       <div
@@ -52,11 +57,16 @@ button.villager-card {
   transition: all 100ms ease-in-out;
 
   &:hover {
-    transform: translateY(-1.5em) translateZ(3px) scale(1.1) rotate(-3deg);
+    transform: translateY(-2em) translateZ(3px) scale(1.1) rotateZ(-3deg);
+    box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.2);
   }
 
   h3 {
     border-radius: 30px 52% 52% 48%/32px 58% 34px 68%;
+  }
+
+  img.villager-icon {
+    filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.1));
   }
 }
 </style>

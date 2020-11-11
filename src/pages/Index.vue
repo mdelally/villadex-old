@@ -17,18 +17,35 @@
       </p>
     </div>
 
-    <VillagerList />
+    <VillagerList @select-villager="setVillager" />
+    <VillagerInfoPage :villager="currentVillager" @close-info="closeInfo" />
   </Layout>
 </template>
 
 <script>
 import VillagerList from "@/components/VillagerList.vue";
+import VillagerInfoPage from "@/components/VillagerInfoPage.vue";
 
 export default {
   metaInfo: {
     title: "New Horizons Villager Codex",
   },
 
-  components: { VillagerList },
+  components: { VillagerList, VillagerInfoPage },
+
+  data() {
+    return {
+      currentVillager: null,
+    };
+  },
+
+  methods: {
+    setVillager(v) {
+      this.currentVillager = v;
+    },
+    closeInfo() {
+      this.currentVillager = null;
+    },
+  },
 };
 </script>

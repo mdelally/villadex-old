@@ -72,7 +72,12 @@
         mode="out-in"
         name="cards"
       >
-        <VillagerCard v-for="v in filteredVillagers" :key="v.id" :v="v" />
+        <VillagerCard
+          v-for="v in filteredVillagers"
+          :key="v.id"
+          :v="v"
+          @select-villager="$emit('select-villager', v)"
+        />
       </transition-group>
     </div>
 
