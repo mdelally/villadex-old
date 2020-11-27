@@ -6,7 +6,7 @@
     ></div>
 
     <div class="info-container flex items-center justify-center">
-      <div class="info-modal w-4/5 bg-yellow-100 p-8 rounded-lg">
+      <div class="info-modal w-4/5 bg-green-100 p-8 rounded-lg">
         <!-- TOP SECTION - GENERAL basic AND IMAGE -->
         <div class="flex">
           <div>
@@ -14,12 +14,12 @@
           </div>
 
           <div class="ml-4 w-full">
-            <h2 class="text-4xl text-yellow-900">{{ villager.name }}</h2>
+            <h2 class="text-4xl text-green-900">{{ villager.name }}</h2>
 
             <div
-              class="flex items-center border-b-2 border-yellow-500 w-full pb-2"
+              class="flex items-center border-b-2 border-green-500 w-full pb-2"
             >
-              <em class="text-xl text-yellow-800 font-black mr-4">{{
+              <em class="text-xl text-green-800 font-black mr-4">{{
                 villager.personality + " " + villager.species
               }}</em>
               <div
@@ -28,7 +28,7 @@
                 {{ villager.nh_details.hobby }}
               </div>
               <strong
-                class="bg-yellow-600 text-yellow-200 border-2 border-yellow-700 px-4 rounded-full"
+                class="bg-green-600 text-green-200 border-2 border-green-700 px-4 rounded-full"
                 >{{
                   villager.birthday_month + " " + villager.birthday_day
                 }}</strong
@@ -36,7 +36,7 @@
             </div>
 
             <div
-              class="p-2 border-l-4 border-yellow-900 mt-2 italic text-yellow-800 text-xl bg-orange-200"
+              class="p-2 border-l-4 border-green-900 mt-2 italic text-green-800 text-xl bg-orange-200"
             >
               "{{ villager.quote }}"
             </div>
@@ -44,17 +44,17 @@
         </div>
 
         <!-- BOTTOM SECTION - DETAILS -->
-        <h3 class="text-2xl text-yellow-800 mt-4">Details</h3>
-        <div class="bottom-section py-2 mt-2 text-yellow-900">
+        <h3 class="text-2xl text-green-800 mt-4">Details</h3>
+        <div class="bottom-section py-2 mt-2 text-green-900">
           <!-- INFO -->
           <div class="info-section">
             <div
               v-for="d in availableDetails"
               :key="d[0]"
-              class="bg-yellow-300 mb-1 rounded-full flex"
+              class="bg-green-300 mb-1 rounded-full flex"
             >
               <div
-                class="detail-label rounded-full font-bold uppercase bg-yellow-700 text-yellow-200 px-2 py-1 min-w-1"
+                class="detail-label rounded-full font-bold uppercase bg-green-700 text-green-200 px-2 py-1 min-w-1"
               >
                 {{ detailLabel(d[0]) }}:
               </div>
@@ -63,9 +63,9 @@
           </div>
 
           <!-- HOUSE INFO -->
-          <div class="house-info-section p-4 bg-yellow-300 rounded-lg flex">
+          <div class="house-info-section p-4 bg-green-300 rounded-lg flex">
             <div
-              class="flex flex-col items-center text-xl text-yellow-800 mb-2 p-2 w-64"
+              class="flex flex-col items-center text-xl text-green-800 mb-2 p-2 w-64"
             >
               <h4>House Exterior</h4>
               <a :href="villager.nh_details.house_exterior_url" target="_blank"
@@ -73,7 +73,7 @@
               /></a>
             </div>
             <div
-              class="flex flex-col items-center text-xl text-yellow-800 mb-2 p-2 w-64"
+              class="flex flex-col items-center text-xl text-green-800 mb-2 p-2 w-64"
             >
               <h4>House Interior</h4>
               <a :href="villager.nh_details.house_interior_url" target="_blank"
@@ -81,7 +81,7 @@
               /></a>
             </div>
             <div
-              class="flex flex-col items-center text-xl text-yellow-800 mb-2 p-2 w-64"
+              class="flex flex-col items-center text-xl text-green-800 mb-2 p-2 w-64"
             >
               <h4>Villager Photo</h4>
               <a :href="villager.nh_details.photo_url" target="_blank"

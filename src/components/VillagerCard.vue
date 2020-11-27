@@ -1,7 +1,7 @@
 <template>
   <div class="villager-card-container p-2">
     <button
-      class="w-full villager-card bg-yellow-200 rounded-lg p-4 flex flex-col justify-center items-center hover:bg-yellow-100 border-4 border-transparent hover:border-yellow-700"
+      class="w-full villager-card bg-green-200 rounded-lg p-4 flex flex-col justify-center items-center hover:bg-green-100 border-4 border-transparent hover:border-green-700"
       @click="$emit('select-villager')"
     >
       <h3
@@ -15,7 +15,7 @@
         :src="v.nh_details.icon_url"
         :alt="v.name"
       />
-      <em class="text-yellow-900 m-2 px-3 py-1 font-black rounded-full">{{
+      <em class="text-green-900 m-2 px-3 py-1 font-black rounded-full">{{
         v.personality + " " + v.species
       }}</em>
       <div
@@ -24,7 +24,7 @@
         {{ v.nh_details.hobby }}
       </div>
       <strong
-        class="bg-yellow-600 text-yellow-200 border-2 border-yellow-700 px-4 py-1 rounded-full"
+        class="bg-green-600 text-green-200 border-2 border-green-700 px-4 py-1 rounded-full"
         >{{ v.birthday_month + " " + v.birthday_day }}</strong
       >
     </button>

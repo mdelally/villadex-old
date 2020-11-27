@@ -1,6 +1,6 @@
 <template>
-  <div class="mt-8 bg-yellow-500 p-8 rounded-lg">
-    <div class="text-center p-16 text-yellow-700" v-if="loading">
+  <div class="mt-8 bg-green-500 p-8 rounded-lg">
+    <div class="text-center p-16 text-green-700" v-if="loading">
       <h3 class="text-5xl">Initial Loading...</h3>
       <p class="text-3xl">
         If this is the first time you're visiting Villadex, please allow the app
@@ -12,13 +12,13 @@
 
     <div
       v-if="!loading"
-      class="p-4 bg-yellow-300 rounded-lg text-yellow-700 mb-2 border-2 border-yellow-600 flex justify-between items-center"
+      class="p-4 bg-green-300 rounded-lg text-green-700 mb-2 border-2 border-green-600 flex justify-between items-center"
     >
       <div class="flex flex-col items-center">
         <label class="text-sm font-black">FILTER BY NAME</label>
         <input
           type="text"
-          class="p-2 rounded-full bg-yellow-200 border-2 border-yellow-400 w-64 text-center"
+          class="p-2 rounded-full bg-green-200 border-2 border-green-400 w-64 text-center"
           v-model="nameFilter"
         />
       </div>
@@ -29,7 +29,7 @@
           <label for="personality" class="text-sm font-black">SPECIES</label>
           <select
             name="personality"
-            class="px-4 py-2 rounded-full bg-yellow-200 border-2 border-yellow-400"
+            class="px-4 py-2 rounded-full bg-green-200 border-2 border-green-400"
             v-model="specie"
           >
             <option :value="null" default>All</option>
@@ -46,7 +46,7 @@
           >
           <select
             name="personality"
-            class="px-4 py-2 rounded-full bg-yellow-200 border-2 border-yellow-400"
+            class="px-4 py-2 rounded-full bg-green-200 border-2 border-green-400"
             v-model="personality"
           >
             <option :value="null" default>All</option>
@@ -61,7 +61,7 @@
           <label for="personality" class="text-sm font-black">HOBBY</label>
           <select
             name="personality"
-            class="px-4 py-2 rounded-full bg-yellow-200 border-2 border-yellow-400"
+            class="px-4 py-2 rounded-full bg-green-200 border-2 border-green-400"
             v-model="hobby"
           >
             <option :value="null" default>All</option>
@@ -71,7 +71,7 @@
 
         <!-- CLEAR FILTERS -->
         <button
-          class="text-yellow-700 px-6 font-bold"
+          class="text-green-700 px-6 font-bold"
           @click="clearFilters"
           v-if="hasFilters"
         >
@@ -96,7 +96,7 @@
       </transition-group>
     </div>
 
-    <div class="text-center p-16 text-5xl text-yellow-700" v-else-if="!loading">
+    <div class="text-center p-16 text-5xl text-green-700" v-else-if="!loading">
       NO VILLAGERS MATCH!
     </div>
   </div>
