@@ -15,6 +15,13 @@
       <p class="text-xs">
         All characters, content, and imagery is copyright Nintendo.
       </p>
+
+      <button
+        class="hover:bg-yellow-800 hover:text-yellow-200 font-bold px-8 py-2 mt-4 rounded-full hover:border-transparent border-2 border-yellow-800 text-yellow-800 bg-transparent"
+        @click="clearData"
+      >
+        Clear and Update Villager Data
+      </button>
     </div>
 
     <VillagerList @select-villager="setVillager" />
@@ -45,6 +52,12 @@ export default {
     },
     closeInfo() {
       this.currentVillager = null;
+    },
+    clearData() {
+      if (confirm("Are you sure you want to clear and update?")) {
+        localStorage.removeItem("villadex-villagers");
+        window.location.reload();
+      }
     },
   },
 };

@@ -1,7 +1,13 @@
 <template>
   <div class="mt-8 bg-yellow-500 p-8 rounded-lg">
-    <div class="text-center p-16 text-5xl text-yellow-700" v-if="loading">
-      {{ loadingText }}
+    <div class="text-center p-16 text-yellow-700" v-if="loading">
+      <h3 class="text-5xl">Initial Loading...</h3>
+      <p class="text-3xl">
+        If this is the first time you're visiting Villadex, please allow the app
+        to load all the Villager data. This process can take upwards of a minute
+        or so depending on your connection. The data will be stored locally on
+        your device to save you time in the future.
+      </p>
     </div>
 
     <div
@@ -26,7 +32,7 @@
             class="px-4 py-2 rounded-full bg-yellow-200 border-2 border-yellow-400"
             v-model="specie"
           >
-            <option :value="null" default>-- Species --</option>
+            <option :value="null" default>All</option>
             <option v-for="s in species" :key="s" :value="s">
               {{ s }}
             </option>
@@ -43,7 +49,7 @@
             class="px-4 py-2 rounded-full bg-yellow-200 border-2 border-yellow-400"
             v-model="personality"
           >
-            <option :value="null" default>-- Personality --</option>
+            <option :value="null" default>All</option>
             <option v-for="p in personalities" :key="p" :value="p">
               {{ p }}
             </option>
@@ -58,10 +64,19 @@
             class="px-4 py-2 rounded-full bg-yellow-200 border-2 border-yellow-400"
             v-model="hobby"
           >
-            <option :value="null" default>-- Hobby --</option>
+            <option :value="null" default>All</option>
             <option v-for="h in hobbies" :key="h" :value="h">{{ h }}</option>
           </select>
         </div>
+
+        <!-- CLEAR FILTERS -->
+        <button
+          class="text-yellow-700 px-6 font-bold"
+          @click="clearFilters"
+          v-if="hasFilters"
+        >
+          Clear Filters
+        </button>
       </div>
     </div>
 
@@ -190,6 +205,14 @@ export default {
 
       return this.filteredByName;
     },
+    hasFilters() {
+      return (
+        this.nameFilter !== "" ||
+        this.specie !== null ||
+        this.personality !== null ||
+        this.hobby !== null
+      );
+    },
   },
 
   methods: {
@@ -221,6 +244,12 @@ export default {
         .catch((results) => {
           this.loadingText = "LOAD FAILED!";
         });
+    },
+    clearFilters() {
+      this.nameFilter = "";
+      this.specie = null;
+      this.personality = null;
+      this.hobby = null;
     },
   },
 

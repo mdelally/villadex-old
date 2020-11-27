@@ -51,10 +51,14 @@
             <div
               v-for="d in availableDetails"
               :key="d[0]"
-              class="bg-yellow-300 mb-1 px-2 py-1 rounded-full"
+              class="bg-yellow-300 mb-1 rounded-full flex"
             >
-              <span class="font-bold uppercase">{{ d[0] }}:</span>
-              {{ d[1] }}
+              <div
+                class="detail-label rounded-full font-bold uppercase bg-yellow-700 text-yellow-200 px-2 py-1 min-w-1"
+              >
+                {{ detailLabel(d[0]) }}:
+              </div>
+              <div class="px-2 py-1">{{ parseDetail(d[1]) }}</div>
             </div>
           </div>
 
@@ -76,6 +80,14 @@
                 ><img :src="villager.nh_details.house_interior_url"
               /></a>
             </div>
+            <div
+              class="flex flex-col items-center text-xl text-yellow-800 mb-2 p-2 w-64"
+            >
+              <h4>Villager Photo</h4>
+              <a :href="villager.nh_details.photo_url" target="_blank"
+                ><img :src="villager.nh_details.photo_url"
+              /></a>
+            </div>
           </div>
         </div>
       </div>
@@ -95,9 +107,9 @@ export default {
     return {
       availableDetailList: [
         "id",
-        "species",
-        "personality",
         "gender",
+        "personality",
+        "species",
         "sign",
         "clothing",
       ],
@@ -106,6 +118,8 @@ export default {
         "hobby",
         "house_music",
         "house_wallpaper",
+        "fav_colors",
+        "fav_styles",
       ],
     };
   },
@@ -138,6 +152,19 @@ export default {
       return details;
     },
   },
+
+  methods: {
+    detailLabel(label) {
+      return label.replace("_", " ");
+    },
+    parseDetail(detail) {
+      if (Array.isArray(detail)) {
+        return detail.join(", ");
+      }
+
+      return detail;
+    },
+  },
 };
 </script>
 
@@ -162,11 +189,20 @@ div.info-container {
   div.info-modal {
     pointer-events: all;
 
+    max-width: 1200px;
+
     box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.2);
 
     div.bottom-section {
       max-height: 300px;
       overflow-y: scroll;
+    }
+
+    div.detail-label {
+      flex-basis: 20%;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      text-align: center;
     }
   }
 }

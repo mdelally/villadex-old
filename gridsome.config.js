@@ -5,10 +5,6 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'villadex',
-  plugins: [
-    {
-      use: "gridsome-plugin-tailwindcss"
-    }
-  ]
-}
+  siteName: "villadex",
+  plugins: [{ use: "gridsome-plugin-tailwindcss" }],
+};
