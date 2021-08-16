@@ -1,34 +1,97 @@
 <template>
-  <div v-if="villager">
+  <div>
     <div
-      class="info-shade flex items-center justify-center"
+      class="
+        info-shade
+        flex
+        items-center
+        justify-center
+        backdrop-filter backdrop-blur
+      "
       @click="$emit('close-info')"
     ></div>
 
     <div class="info-container flex items-center justify-center">
-      <div class="info-modal w-4/5 bg-green-100 p-8 rounded-lg">
+      <div
+        class="
+          info-modal
+          w-4/5
+          sm:w-full
+          bg-green-100
+          sm:p-2
+          sm:pt-0
+          p-8
+          pt-4
+          rounded-lg
+        "
+      >
+        <div class="flex justify-end sm:p-2 sm:sticky sm:top-0 bg-green-100">
+          <button
+            @click="$emit('close-info')"
+            class="
+              bg-green-800
+              py-2
+              px-4
+              text-green-100
+              hover:bg-green-100
+              border-2 border-transparent
+              hover:border-green-800
+              hover:text-green-800
+              rounded-full
+              font-bold
+              sm:text-xs
+            "
+          >
+            CLOSE
+          </button>
+        </div>
+
         <!-- TOP SECTION - GENERAL basic AND IMAGE -->
-        <div class="flex">
+        <div class="flex sm:flex-col sm:items-center">
           <div>
             <img :src="villager.image_url" class="w-24 mr-4" />
           </div>
 
-          <div class="ml-4 w-full">
-            <h2 class="text-4xl text-green-900">{{ villager.name }}</h2>
+          <div class="ml-4 w-full sm:ml-0 sm:p-2">
+            <h2 class="text-4xl text-green-900 sm:text-center">
+              {{ villager.name }}
+            </h2>
 
             <div
-              class="flex items-center border-b-2 border-green-500 w-full pb-2"
+              class="
+                flex
+                items-center
+                border-b-2 border-green-500
+                w-full
+                pb-2
+                sm:flex-col
+              "
             >
               <em class="text-xl text-green-800 font-black mr-4">{{
                 villager.personality + " " + villager.species
               }}</em>
               <div
-                class="bg-blue-200 px-3 rounded-full border-2 border-blue-600 text-blue-600 mr-2"
+                class="
+                  bg-blue-200
+                  px-3
+                  rounded-full
+                  border-2 border-blue-600
+                  text-blue-600
+                  mr-2
+                  sm:mr-0
+                  sm:mb-2
+                "
               >
                 {{ villager.nh_details.hobby }}
               </div>
               <strong
-                class="bg-green-600 text-green-200 border-2 border-green-700 px-4 rounded-full"
+                class="
+                  bg-green-600
+                  text-green-200
+                  border-2 border-green-700
+                  px-4
+                  rounded-full
+                "
                 >{{
                   villager.birthday_month + " " + villager.birthday_day
                 }}</strong
@@ -36,7 +99,14 @@
             </div>
 
             <div
-              class="p-2 border-l-4 border-green-900 mt-2 italic text-green-800 text-xl bg-orange-200"
+              class="
+                p-2
+                border-l-4 border-green-900
+                mt-2
+                italic
+                text-green-800 text-xl
+                bg-orange-200
+              "
             >
               "{{ villager.quote }}"
             </div>
@@ -54,7 +124,17 @@
               class="bg-green-300 mb-1 rounded-full flex"
             >
               <div
-                class="detail-label rounded-full font-bold uppercase bg-green-700 text-green-200 px-2 py-1 min-w-1"
+                class="
+                  detail-label
+                  rounded-full
+                  font-bold
+                  uppercase
+                  bg-green-700
+                  text-green-200
+                  px-2
+                  py-1
+                  sm:min-w-max
+                "
               >
                 {{ detailLabel(d[0]) }}:
               </div>
@@ -63,9 +143,28 @@
           </div>
 
           <!-- HOUSE INFO -->
-          <div class="house-info-section p-4 bg-green-300 rounded-lg flex">
+          <div
+            class="
+              house-info-section
+              p-4
+              bg-green-300
+              rounded-xl
+              flex
+              sm:flex-col
+              sm:items-center
+              justify-evenly
+              mt-4
+            "
+          >
             <div
-              class="flex flex-col items-center text-xl text-green-800 mb-2 p-2 w-64"
+              class="
+                flex flex-col
+                items-center
+                text-xl text-green-800
+                mb-2
+                p-2
+                w-64
+              "
             >
               <h4>House Exterior</h4>
               <a :href="villager.nh_details.house_exterior_url" target="_blank"
@@ -73,7 +172,14 @@
               /></a>
             </div>
             <div
-              class="flex flex-col items-center text-xl text-green-800 mb-2 p-2 w-64"
+              class="
+                flex flex-col
+                items-center
+                text-xl text-green-800
+                mb-2
+                p-2
+                w-64
+              "
             >
               <h4>House Interior</h4>
               <a :href="villager.nh_details.house_interior_url" target="_blank"
@@ -81,7 +187,14 @@
               /></a>
             </div>
             <div
-              class="flex flex-col items-center text-xl text-green-800 mb-2 p-2 w-64"
+              class="
+                flex flex-col
+                items-center
+                text-xl text-green-800
+                mb-2
+                p-2
+                w-64
+              "
             >
               <h4>Villager Photo</h4>
               <a :href="villager.nh_details.photo_url" target="_blank"
@@ -97,7 +210,7 @@
 
 <script>
 export default {
-  name: "VillagerbasicPage",
+  name: "VillagerInfoPage",
 
   props: {
     villager: { type: Object, default: null },
@@ -136,6 +249,8 @@ export default {
 
   computed: {
     availableDetails() {
+      if (this.villager === null) return [];
+
       let details = [];
 
       let basic = Object.entries(this.villager).filter((e) => {
@@ -155,7 +270,7 @@ export default {
 
   methods: {
     detailLabel(label) {
-      return label.replace("_", " ");
+      return label.replace("_", " ").replace("house", "");
     },
     parseDetail(detail) {
       if (Array.isArray(detail)) {
@@ -203,6 +318,34 @@ div.info-container {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       text-align: center;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  div.info-container {
+    div.info-modal {
+      height: 100vh;
+      overflow: scroll;
+      border-radius: 0;
+
+      div.bottom-section {
+        max-height: unset;
+
+        div.detail-label {
+          flex-basis: 40%;
+        }
+      }
+    }
+  }
+}
+
+@media (min-height: 900px) {
+  div.info-container {
+    div.info-modal {
+      div.bottom-section {
+        max-height: 520px;
+      }
     }
   }
 }

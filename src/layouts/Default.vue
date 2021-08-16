@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-8">
+  <div class="container mx-auto sm:px-2 px-8">
     <h1 class="logo text-6xl text-center my-8 text-yellow-900">Villadex</h1>
     <h4></h4>
     <slot />

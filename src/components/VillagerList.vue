@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-8 bg-green-500 p-8 rounded-lg">
+  <div class="mt-8 bg-green-500 p-8 sm:p-2 rounded-lg">
     <div class="text-center p-16 text-green-700" v-if="loading">
       <h3 class="text-5xl">Initial Loading...</h3>
       <p class="text-3xl">
@@ -9,11 +9,11 @@
         your device to save you time in the future.
       </p>
     </div>
-
     <div
       v-if="!loading"
       class="
         p-4
+        sm:p-2
         bg-green-300
         rounded-lg
         text-green-700
@@ -22,6 +22,8 @@
         flex
         justify-between
         items-center
+        flex-wrap
+        sm:flex-col
       "
     >
       <div class="flex flex-col items-center">
@@ -40,7 +42,7 @@
         />
       </div>
 
-      <div class="toolbar flex">
+      <div class="toolbar flex sm:flex-col flex-wrap">
         <!-- SPECIES -->
         <div class="flex flex-col items-center">
           <label for="personality" class="text-sm font-black">SPECIES</label>
@@ -295,6 +297,24 @@ export default {
 <style lang="scss">
 div.villager-card-container {
   flex-basis: 25%;
+}
+
+@media (max-width: 1023px) {
+  div.villager-card-container {
+    flex-basis: 33%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.villager-card-container {
+    flex-basis: 50%;
+  }
+}
+
+@media (max-width: 639px) {
+  div.villager-card-container {
+    flex-basis: 100%;
+  }
 }
 
 .cards-enter-active,
