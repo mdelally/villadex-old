@@ -12,13 +12,30 @@
 
     <div
       v-if="!loading"
-      class="p-4 bg-green-300 rounded-lg text-green-700 mb-2 border-2 border-green-600 flex justify-between items-center"
+      class="
+        p-4
+        bg-green-300
+        rounded-lg
+        text-green-700
+        mb-2
+        border-2 border-green-600
+        flex
+        justify-between
+        items-center
+      "
     >
       <div class="flex flex-col items-center">
         <label class="text-sm font-black">FILTER BY NAME</label>
         <input
           type="text"
-          class="p-2 rounded-full bg-green-200 border-2 border-green-400 w-64 text-center"
+          class="
+            p-2
+            rounded-full
+            bg-green-200
+            border-2 border-green-400
+            w-64
+            text-center
+          "
           v-model="nameFilter"
         />
       </div>
@@ -29,7 +46,13 @@
           <label for="personality" class="text-sm font-black">SPECIES</label>
           <select
             name="personality"
-            class="px-4 py-2 rounded-full bg-green-200 border-2 border-green-400"
+            class="
+              px-4
+              py-2
+              rounded-full
+              bg-green-200
+              border-2 border-green-400
+            "
             v-model="specie"
           >
             <option :value="null" default>All</option>
@@ -46,7 +69,13 @@
           >
           <select
             name="personality"
-            class="px-4 py-2 rounded-full bg-green-200 border-2 border-green-400"
+            class="
+              px-4
+              py-2
+              rounded-full
+              bg-green-200
+              border-2 border-green-400
+            "
             v-model="personality"
           >
             <option :value="null" default>All</option>
@@ -61,7 +90,13 @@
           <label for="personality" class="text-sm font-black">HOBBY</label>
           <select
             name="personality"
-            class="px-4 py-2 rounded-full bg-green-200 border-2 border-green-400"
+            class="
+              px-4
+              py-2
+              rounded-full
+              bg-green-200
+              border-2 border-green-400
+            "
             v-model="hobby"
           >
             <option :value="null" default>All</option>
@@ -228,7 +263,8 @@ export default {
           "https://api.nookipedia.com/villagers?game=nh&nhdetails=true&thumbsize=160",
           {
             headers: {
-              "X-API-KEY": "b08eeca9-ec87-4ede-80b8-73c630bb532f",
+              "X-API-KEY": "d84c97c8-144d-41a3-8639-2275e7cfecf8",
+              "Accept-Version": "2.0.0",
             },
           }
         )
