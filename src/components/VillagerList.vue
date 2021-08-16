@@ -299,6 +299,12 @@ div.villager-card-container {
   flex-basis: 25%;
 }
 
+@media (min-width: 1920px) {
+  div.villager-card-container {
+    flex-basis: 20%;
+  }
+}
+
 @media (max-width: 1023px) {
   div.villager-card-container {
     flex-basis: 33%;
