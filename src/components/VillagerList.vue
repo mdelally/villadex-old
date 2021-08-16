@@ -259,15 +259,12 @@ export default {
       }
 
       axios
-        .get(
-          "https://api.nookipedia.com/villagers?game=nh&nhdetails=true&thumbsize=160",
-          {
-            headers: {
-              "X-API-KEY": "d84c97c8-144d-41a3-8639-2275e7cfecf8",
-              "Accept-Version": "2.0.0",
-            },
-          }
-        )
+        .get("https://api.nookipedia.com/villagers?game=nh&nhdetails=true", {
+          headers: {
+            "X-API-KEY": "d84c97c8-144d-41a3-8639-2275e7cfecf8",
+            "Accept-Version": "2.0.0",
+          },
+        })
         .then((results) => {
           this.villagers = results.data;
 
