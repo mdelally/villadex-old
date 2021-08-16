@@ -162,7 +162,7 @@ export default {
         "Lazy",
         "Normal",
         "Peppy",
-        "Sisterly",
+        "Big sister",
         "Smug",
         "Snooty",
       ],
