@@ -125,8 +125,8 @@
         name="cards"
       >
         <VillagerCard
-          v-for="v in filteredVillagers"
-          :key="v.id"
+          v-for="(v, index) in filteredVillagers"
+          :key="'villager' + index + '_' + v.id"
           :v="v"
           @select-villager="$emit('select-villager', v)"
         />
